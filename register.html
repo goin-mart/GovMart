@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GOIN MART - Member Registration</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f0f6ef;
+      color: #173b2b;
+    }
+    .header {
+      text-align: center;
+      background: #13783f;
+      color: white;
+      padding: 22px 12px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+    .header h1 { margin: 0 0 8px; }
+    .card {
+      max-width: 480px;
+      margin: auto;
+      padding: 22px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px #00000010;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 6px;
+    }
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd8cf;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 9px;
+      background: #13783f;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .note {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #53665a;
+    }
+    a { color: #13783f; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>GOIN MART</h1>
+    <div>Shop Smart. Save More.</div>
+  </div>
+
+  <div class="card">
+    <h2>Member Registration</h2>
+    <p class="note">
+      Create your GOIN MART member account.
+    </p>
+
+    <form id="registerForm">
+      <label for="fullName">Full Name</label>
+      <input id="fullName" name="fullName"
+        autocomplete="name" required>
+
+      <label for="mobile">Mobile Number</label>
+      <input id="mobile" name="mobile"
+        type="tel" inputmode="numeric"
+        pattern="[0-9]{10}" maxlength="10"
+        autocomplete="tel-national" required>
+
+      <label for="username">Username</label>
+      <input id="username" name="username"
+        minlength="4" maxlength="30"
+        pattern="[A-Za-z0-9_]+"
+        autocomplete="username" required>
+
+      <label for="email">Email Address</label>
+      <input id="email" name="email"
+        type="email" autocomplete="email" required>
+
+      <label for="referralCode">Referral Code (Required)</label>
+      <input id="referralCode" name="referralCode"
+        autocomplete="off" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password"
+        type="password" minlength="10"
+        autocomplete="new-password" required>
+
+      <p class="note">
+        Your account will remain inactive until the
+        required activation process is completed.
+      </p>
+
+      <button type="submit">Register</button>
+
+      <p id="message" class="note" role="status"></p>
+    </form>
+
+    <p class="note">
+      Already registered? <a href="login.html">Login here</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("registerForm")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("message").textContent =
+          "Registration service is not connected yet.";
+      });
+  </script>
+</body>
+</html>
