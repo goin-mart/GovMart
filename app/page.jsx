@@ -1,22 +1,15 @@
-'use client'
-import Link from 'next/link'
-
-export default function Home(){
-  return(
-    <main style={{minHeight:'100vh',background:'#f8faf8',fontFamily:'system-ui'}}>
-      <div style={{background:'white',padding:'40px 20px',textAlign:'center',borderBottom:'4px solid #0a5c36'}}>
-        <h1 style={{fontSize:48,margin:0,color:'#0a5c36'}}>GovMART</h1>
-        <p>Grocery Shopping with Smart Membership Rewards</p>
-        <div style={{marginTop:24,display:'flex',gap:12,justifyContent:'center'}}>
-          <Link href="/user-dashboard" style={{background:'#0a5c36',color:'white',padding:'12px 20px',borderRadius:10,textDecoration:'none',fontWeight:700}}>User Dashboard</Link>
-          <Link href="/admin" style={{background:'white',color:'#0a5c36',border:'2px solid #0a5c36',padding:'12px 20px',borderRadius:10,textDecoration:'none',fontWeight:700}}>Admin Panel</Link>
-          <Link href="/store" style={{background:'#ff7a00',color:'white',padding:'12px 20px',borderRadius:10,textDecoration:'none',fontWeight:700}}>Store Billing</Link>
-        </div>
+export default function Home() {
+  return (
+    <div style={{padding:20, textAlign:'center'}}>
+      <h1>GovMart - GOIN MART</h1>
+      <p>Grocery MLM + Subscription - LIVE!</p>
+      <div style={{marginTop:20, display:'flex', gap:10, justifyContent:'center'}}>
+        <a href="/admin" style={{padding:'10px 20px', background:'black', color:'white', borderRadius:8}}>Admin</a>
+        <a href="/user-dashboard" style={{padding:'10px 20px', background:'blue', color:'white', borderRadius:8}}>User Dashboard</a>
+        <a href="/store" style={{padding:'10px 20px', background:'green', color:'white', borderRadius:8}}>Store</a>
       </div>
-      <div style={{padding:20,maxWidth:800,margin:'20px auto'}}>
-        <p>Plans: 100,300,500,1000,3000,5000,10000 - Admin editable</p>
-        <p>Binary: Left 1 + Right 1 = Active. Daily cap = Plan amount. Toor Dal split 30 = 3+3+24</p>
-      </div>
-    </main>
+      <p style={{marginTop:20}}>Plans: 100,300,500,1000,3000,5000,10000</p>
+      <p>Toor Dal Example: 150-100-20=30 => 3 self + 3 referral + 24/6=4 binary</p>
+    </div>
   )
 }
