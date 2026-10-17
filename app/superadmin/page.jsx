@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { calculateProductSplit } from '@/lib/commission.js';
+import { calculateProductSplit } from '../../lib/commission.js';
 export default function SuperAdmin(){
   const [sale,setSale]=useState(150);
   const [whole,setWhole]=useState(100);
