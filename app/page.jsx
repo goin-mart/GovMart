@@ -9,7 +9,6 @@ export default function Home(){
         <Link href='/store' style={{background:'green',color:'#fff',padding:'12px 20px',borderRadius:10,textDecoration:'none',fontWeight:600}}>Store</Link>
       </div>
       <p style={{marginTop:24,opacity:0.7}}>Toor Dal: 150-100-20=30 = 3+3+24/6=4</p>
-      <p style={{marginTop:12,fontSize:12,opacity:0.4}}>Admin hidden - go to /superadmin</p>
     </div>
   )
 }
