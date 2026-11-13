@@ -51,6 +51,18 @@
 .withdraw-success{display:block!important;background:#e8f7ee!important;border:1px solid #168348!important;border-left:5px solid #168348!important;border-radius:10px!important;color:#14532d!important;font-weight:700!important;padding:14px 16px!important;margin:14px 0!important;line-height:1.55!important;box-shadow:0 2px 8px rgba(22,131,72,.12)!important}
 .withdraw-error{display:block!important;background:#fff0f0!important;border:1px solid #dc2626!important;border-left:5px solid #dc2626!important;border-radius:10px!important;color:#991b1b!important;font-weight:700!important;padding:14px 16px!important;margin:14px 0!important;line-height:1.55!important}
 </style></head><body>
+<style id="hostingRenewalNoticeStyle">
+#hostingRenewalNotice{
+  position:sticky;top:0;z-index:99999;display:block;width:100%;
+  padding:12px 14px;background:#c40000;color:#fff;text-align:center;
+  font-family:Arial,system-ui,sans-serif;font-size:14px;line-height:1.4;
+  font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.22);
+}
+</style>
+<div id="hostingRenewalNotice" role="alert" aria-live="polite">
+  Hosting plan renewal required. Please contact your hosting provider.
+</div>
+
 <section id="loading" class="card" style="max-width:500px;margin:50px auto"><h2>GOV MART</h2><p class="mut">Checking your secure session...</p></section>
 <section id="signedOut" class="card hidden" style="max-width:500px;margin:50px auto"><h2>Login required</h2><p class="mut" id="signedOutMessage">Please sign in with your GOV MART member account.</p><button class="btn" onclick="location.href='login.html'">Go to Login</button> <button class="btn secondary" onclick="location.href='index.html'">Home</button></section>
 <section id="app" class="layout hidden"><aside><div class="brand"><div class="logo">GM</div><div>GOV MART<div class="mut">Shop Smart. Save More.</div></div></div><nav class="nav" id="sidenav"></nav><div class="aside-note">MEMBER PORTAL<br><b>GOV MART</b><br>Secure member dashboard</div></aside>
