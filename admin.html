@@ -3,7 +3,7 @@
 <style>*{box-sizing:border-box}body{margin:0;padding:14px;font-family:Arial,sans-serif;background:#f3f6f4;color:#173b2b}header{background:linear-gradient(135deg,#116b3a,#169453);color:white;text-align:left;padding:22px;border-radius:18px;margin:0 auto 14px;max-width:1100px;box-shadow:0 8px 24px #14532d20}header h1{margin:0 0 5px;font-size:clamp(25px,5vw,34px)}.card{max-width:1100px;margin:0 auto 16px;background:white;padding:18px;border:1px solid #e2e9e4;border-radius:16px;box-shadow:0 4px 18px #163a2510}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.nav{max-width:1100px;margin:0 auto 14px;display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px}.nav button{white-space:nowrap;margin:0;background:#e2eee6;color:#1b5635}.nav button.active{background:#13783f;color:white}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.stat{padding:16px;border-radius:14px;background:#f3f8f4;border:1px solid #e0ebe3}.stat .num{font-size:clamp(22px,5vw,30px);font-weight:800;margin-top:8px}.stat .label{font-size:13px;color:#607267}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.toolbar input{flex:1;min-width:180px}.user-row{padding:13px 0;border-bottom:1px solid #e7eee9;overflow-wrap:anywhere}.user-row:last-child{border-bottom:0}.section-title{margin-top:0}@media(min-width:760px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}}label{display:block;font-weight:bold;margin:12px 0 6px}input,select{width:100%;padding:12px;border:1px solid #d7e1da;border-radius:8px;font-size:16px}button{padding:12px 14px;border:0;border-radius:8px;background:#13783f;color:white;font-weight:bold;margin:5px 5px 5px 0}.secondary{background:#e8f2eb;color:#173b2b}.danger{background:#a92b2b}.muted{color:#5c6c62;line-height:1.5}.hidden{display:none!important}.plan{border:1px solid #d7e1da;border-radius:10px;padding:14px;margin-top:10px}.pill{font-size:12px;font-weight:bold;padding:5px 8px;border-radius:18px;background:#e8f2eb;color:#13783f}.off{background:#fce8e8;color:#a92b2b}#msg{overflow-wrap:anywhere}@media(min-width:560px){.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}}</style></head>
 <body><header><div class="topline"><div><h1>GOV MART</h1><div>Administrator dashboard</div></div><button id="logoutTop" class="danger">Sign Out</button></div></header>
 <section class="card" id="checking"><h2>Checking admin access...</h2><p class="muted">Please wait.</p></section>
-<section class="card hidden" id="denied"><h2>Admin access required</h2><p id="deniedText" class="muted">Sign in with the authorized administrator account.</p><button onclick="location.href='admin-login.html'">Go to Login</button><button class="secondary" onclick="location.href='index.html'">Home</button></section>
+<section class="card hidden" id="denied"><h2>Admin Login</h2><p id="deniedText" class="muted">Sign in with your authorized GOV MART administrator email and password.</p><form id="adminInlineLogin" autocomplete="on"><label for="adminLoginEmail">Admin email</label><input id="adminLoginEmail" type="email" autocomplete="username" required placeholder="Enter admin email"><label for="adminLoginPassword">Password</label><input id="adminLoginPassword" type="password" autocomplete="current-password" required placeholder="Enter password"><button id="adminLoginSubmit" type="submit">Login to Admin</button><p id="adminLoginMessage" class="muted" role="status"></p></form><button class="secondary" onclick="location.href='index.html'">Home</button></section>
 <nav class="nav hidden" id="adminNav" aria-label="Admin sections"><button class="active" data-section="dashboard">Dashboard</button><button data-section="users">Users</button><button data-section="plansSection">Plans & ROI</button><button data-section="paymentSettings">Payment Settings</button><button data-section="depositAdmin">Deposits</button><button data-section="activationAdmin">Manual Activation</button><button data-section="recordsAdmin">Activation & Payment Records</button><button data-section="withdrawalAdmin">Withdrawals</button><button data-section="storesAdmin">Franchise Stores</button><button data-section="productsAdmin">Products & Excel</button><button data-section="storeOrdersAdmin">Store Orders & Business</button></nav>
 <section class="card hidden" id="dashboard"><div class="topline"><div><h2 class="section-title">Overview</h2><p class="muted">Live counts from GOV MART member and request tables.</p></div><button class="secondary" id="refreshDashboard">Refresh dashboard</button></div><div class="stats"><div class="stat"><div class="label">Total users</div><div class="num" id="totalUsers">—</div></div><div class="stat"><div class="label">Active users</div><div class="num" id="activeUsers">—</div></div><div class="stat"><div class="label">Inactive users</div><div class="num" id="inactiveUsers">—</div></div><div class="stat"><div class="label">Suspended users</div><div class="num" id="suspendedUsers">—</div></div></div><div class="stats"><div class="stat"><div class="label">Pending deposits</div><div class="num" id="pendingDepositsCount">—</div></div><div class="stat"><div class="label">Pending withdrawals</div><div class="num" id="pendingWithdrawalsCount">—</div></div><div class="stat"><div class="label">Active plans</div><div class="num" id="activePlansCount">—</div></div><div class="stat"><div class="label">Admin tools</div><div class="num">6</div></div></div><p class="muted" id="dashboardMsg" role="status"></p></section>
 <section class="card hidden" id="users"><div class="topline"><div><h2 class="section-title">Member Management</h2><p class="muted">Member name, username, referral person, current plan and account status. Use “Open Member Panel” to securely access a member view (requires the admin impersonation Edge Function below).</p></div><button class="secondary" id="refreshUsers">Refresh users</button></div><div class="toolbar"><input id="userSearch" placeholder="Search name, username, mobile or referral code"><select id="userStatusFilter" style="max-width:180px"><option value="all">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option><option value="suspended">Suspended</option></select></div><p id="usersMsg" class="muted" role="status"></p><div id="usersList">Loading users...</div></section>
@@ -78,7 +78,7 @@ window.__govAdminBootStarted = false;
 window.__govAdminWatchdog = setTimeout(function () {
   var panel = document.getElementById('checking');
   if (panel && !panel.classList.contains('hidden') && !window.__govAdminBootStarted) {
-    panel.innerHTML = '<h2 style="color:#a92b2b">Admin script did not start</h2><p class="muted">The Supabase JavaScript module may be blocked or failed to load. Check internet connection, then refresh. If it repeats, the module CDN or browser content blocker may be blocking the script.</p><button onclick="location.reload()">Retry</button><button class="secondary" onclick="location.href=\'admin-login.html\'">Go to Login</button>';
+    panel.innerHTML = '<h2 style="color:#a92b2b">Admin script did not start</h2><p class="muted">The Supabase JavaScript module may be blocked or failed to load. Check internet connection, then refresh. If it repeats, the module CDN or browser content blocker may be blocking the script.</p><button onclick="location.reload()">Retry</button><button class="secondary" onclick="location.href=\'admin.html\'">Go to Login</button>';
   }
 }, 10000);
 </script>
@@ -96,6 +96,23 @@ try {
 }
 window.__govAdminBootStarted = true; clearTimeout(window.__govAdminWatchdog);
 const cfg=window.GOV_MART_CONFIG,checking=document.getElementById('checking'),denied=document.getElementById('denied'),app=document.getElementById('app'),msg=document.getElementById('msg'),plans=document.getElementById('plans');let sb=null,editId=null;
+const adminLoginForm=document.getElementById('adminInlineLogin');
+if(adminLoginForm)adminLoginForm.addEventListener('submit',async ev=>{
+ ev.preventDefault();const button=document.getElementById('adminLoginSubmit'),status=document.getElementById('adminLoginMessage');
+ const email=document.getElementById('adminLoginEmail').value.trim(),password=document.getElementById('adminLoginPassword').value;
+ if(!sb){status.textContent='Supabase is not ready. Refresh and try again.';return;}
+ button.disabled=true;button.textContent='Signing in...';status.textContent='Checking administrator credentials...';
+ try{
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  if(error)throw error;
+  const user=data?.user;if(!user)throw new Error('Login did not return an authenticated user.');
+  const {data:admin,error:adminError}=await sb.from('gov_mart_admins').select('user_id').eq('user_id',user.id).maybeSingle();
+  if(adminError)throw new Error('Login succeeded, but admin verification failed: '+adminError.message);
+  if(!admin){await sb.auth.signOut();throw new Error('This account is not listed in gov_mart_admins. Ask the project owner to authorize this admin account.');}
+  status.textContent='Login successful. Opening admin dashboard...';location.href='admin.html';
+ }catch(err){status.textContent=err?.message||'Admin login failed.';}
+ finally{button.disabled=false;button.textContent='Login to Admin';}
+});
 const hide=x=>x.classList.add('hidden'),show=x=>x.classList.remove('hidden'),say=x=>msg.textContent=x;
 const el=id=>document.getElementById(id);
 async function getMemberNames(ids){const clean=[...new Set((ids||[]).filter(Boolean).map(String))];if(!clean.length)return new Map();const {data,error}=await sb.from('gov_mart_members').select('id,username,full_name').in('id',clean);if(error){console.warn('Could not resolve member usernames:',error.message);return new Map()}return new Map((data||[]).map(m=>[String(m.id),m.username||m.full_name||'Member']));}
@@ -103,7 +120,7 @@ function memberLabel(id,names){return names.get(String(id))||'Member (name unava
 
 function clearForm(){editId=null;el('name').value='';el('amount').value='';el('roiEnabled').value='false';el('roiRate').value='0';el('roiType').value='daily';el('roiDuration').value='0';el('roiTotalReturn').value='0';el('roiOffDays').value='sat_sun';el('productCommissionLevels').value='5';el('save').textContent='Add Plan';}
 el('roiEnabled').addEventListener('change',()=>{const enabled=el('roiEnabled').value==='true';el('roiRate').disabled=!enabled;el('roiType').disabled=!enabled;el('roiDuration').disabled=!enabled;});el('roiEnabled').dispatchEvent(new Event('change'));
-el('clear').onclick=clearForm;el('refresh').onclick=loadPlans;el('logout').onclick=async()=>{const {error}=await sb.auth.signOut();if(error)say(error.message);else location.href='admin-login.html'};
+el('clear').onclick=clearForm;el('refresh').onclick=loadPlans;el('logout').onclick=async()=>{const {error}=await sb.auth.signOut();if(error)say(error.message);else location.href='admin.html'};
 function roiText(p){if(!p.roi_enabled)return 'ROI: Not applicable';let text=`ROI: ${Number(p.roi_rate).toLocaleString('en-IN')}% ${String(p.roi_type||'monthly')} `;text+=p.roi_duration_days>0?`${p.roi_duration_days} payout days`:'(duration unlimited)';const off=Array.isArray(p.roi_weekly_off_days)?p.roi_weekly_off_days:[];text+=` · Total ROI cap ₹${Number(p.roi_total_return_amount||Number(p.amount||0)*2).toLocaleString('en-IN')} · Off: ${off.length?off.join(', '):'none'}`;return text;}
 async function fetchPlans(){return await sb.from('gov_mart_plans').select('id,plan_name,amount,is_active,roi_enabled,roi_rate,roi_type,roi_duration_days,roi_total_return_amount,roi_weekly_off_days,product_commission_levels').order('amount')}
 async function loadActivationPlans(){const sel=el('activatePlan');sel.replaceChildren(new Option('Loading plans...',''));const {data,error}=await fetchPlans();sel.replaceChildren();if(error){sel.add(new Option('Could not load plans',''));el('activateMsg').textContent='Could not load plans: '+error.message;return}const active=(data||[]).filter(p=>p.is_active);if(!active.length){sel.add(new Option('No active plans',''));return}sel.add(new Option('Select a plan',''));for(const p of active){const o=new Option(p.plan_name+' — ₹'+Number(p.amount).toLocaleString('en-IN'),p.id);o.dataset.amount=p.amount;sel.add(o)}}
@@ -475,7 +492,7 @@ function activateSection(id,writeHistory=false){const ids=['dashboard','users','
 document.querySelectorAll('#adminNav button').forEach(b=>b.addEventListener('click',()=>activateSection(b.dataset.section,true)));
 function restoreSectionFromUrl(){const id=decodeURIComponent(location.hash.slice(1));activateSection(id||'dashboard',false)}
 window.addEventListener('popstate',restoreSectionFromUrl);window.addEventListener('hashchange',restoreSectionFromUrl);
-el('logoutTop').onclick=async()=>{const {error}=await sb.auth.signOut();if(error)el('dashboardMsg').textContent=error.message;else location.href='admin-login.html'};
+el('logoutTop').onclick=async()=>{const {error}=await sb.auth.signOut();if(error)el('dashboardMsg').textContent=error.message;else location.href='admin.html'};
 async function init(){
   const checkingEl = el('checking');
   const withTimeout = (promise, label, ms=12000) => Promise.race([
@@ -496,7 +513,7 @@ async function init(){
     const user=data?.session?.user;
     if(!user){
       hide(checkingEl);show(el('denied'));
-      el('deniedText').textContent='No active login session found. Please sign in with the authorized GOV MART admin account.';
+      el('deniedText').textContent='No active admin session found. Enter the authorized GOV MART admin email and password below.';
       return;
     }
     checkingEl.querySelector('h2').textContent='Verifying administrator account...';
@@ -531,7 +548,7 @@ async function init(){
     const h=document.createElement('h2');h.style.color='#a92b2b';h.textContent='Admin page could not finish loading';
     const p=document.createElement('p');p.className='muted';p.textContent=(e?.message||String(e))+' If the error mentions a timeout, refresh once and check Supabase status/network.';
     const b=document.createElement('button');b.textContent='Retry';b.onclick=()=>location.reload();
-    const login=document.createElement('button');login.className='secondary';login.textContent='Go to Login';login.onclick=()=>location.href='admin-login.html';
+    const login=document.createElement('button');login.className='secondary';login.textContent='Go to Login';login.onclick=()=>location.href='admin.html';
     checkingEl.append(h,p,b,login);
   }
 }
