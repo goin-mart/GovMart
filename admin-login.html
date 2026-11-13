@@ -1,7 +1,24 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GOV MART Admin Login</title>
-<style>*{box-sizing:border-box}body{margin:0;padding:18px;font-family:Arial,sans-serif;background:#f3f6f4;color:#173b2b}header{max-width:650px;margin:20px auto 16px;padding:24px;border-radius:18px;background:linear-gradient(135deg,#116b3a,#169453);color:#fff}header h1{margin:0 0 6px;font-size:32px}header p{margin:0;font-size:18px}.card{max-width:650px;margin:0 auto 16px;padding:24px;background:#fff;border:1px solid #e2e9e4;border-radius:18px;box-shadow:0 4px 18px #163a2510}h2{margin-top:0}label{display:block;font-weight:bold;margin:16px 0 7px}input{width:100%;padding:14px;border:1px solid #cfdad2;border-radius:10px;font-size:17px}button{width:100%;padding:14px;border:0;border-radius:10px;background:#13783f;color:#fff;font-size:17px;font-weight:bold;margin-top:18px}button:disabled{opacity:.6}.muted{color:#5c6c62;line-height:1.5}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#173b2b}</style></head>
-<body><header><h1>GOV MART</h1><p>Administrator Login</p></header><section class="card"><h2>Admin Login</h2><p class="muted">Enter your admin username and password.</p>
+<style>*{box-sizing:border-box}body{margin:0;padding:18px;font-family:Arial,sans-serif;background:#f3f6f4;color:#173b2b}header{max-width:650px;margin:20px auto 16px;padding:24px;border-radius:18px;background:linear-gradient(135deg,#116b3a,#169453);color:#fff}header h1{margin:0 0 6px;font-size:32px}header p{margin:0;font-size:18px}.card{max-width:650px;margin:0 auto 16px;padding:24px;background:#fff;border:1px solid #e2e9e4;border-radius:18px;box-shadow:0 4px 18px #163a2510}h2{margin-top:0}label{display:block;font-weight:bold;margin:16px 0 7px}input{width:100%;padding:14px;border:1px solid #cfdad2;border-radius:10px;font-size:17px}button{width:100%;padding:14px;border:0;border-radius:10px;background:#13783f;color:#fff;font-size:17px;font-weight:bold;margin-top:18px}button:disabled{opacity:.6}.muted{color:#5c6c62;line-height:1.5}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#173b2b}</style>
+<style id="govmart-hosting-notice-style">
+#govmart-hosting-renewal-notice{
+  display:block;width:100%;box-sizing:border-box;
+  background:#c90000;color:#fff;text-align:center;
+  font-family:Arial,sans-serif;font-size:18px;font-weight:700;
+  line-height:1.4;padding:16px 14px;margin:0 0 18px;
+  position:relative;z-index:99999;border-radius:0;
+  box-shadow:0 3px 10px rgba(0,0,0,.18);
+}
+</style>
+
+</head>
+<body>
+
+<div id="govmart-hosting-renewal-notice" role="status" aria-live="polite">
+  Hosting plan renewal required. Please contact your hosting provider.
+</div>
+<header><h1>GOV MART</h1><p>Administrator Login</p></header><section class="card"><h2>Admin Login</h2><p class="muted">Enter your admin username and password.</p>
 <form id="loginForm"><label for="username">Admin username</label><input id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="govmartadmin"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required><button id="submitBtn" type="submit">Login to Admin</button></form><p id="status" class="muted" role="status"></p><p><a href="user.html">Back to Home</a></p></section>
 <script src="config.js"></script><script type="module">
 const statusEl=document.getElementById('status'),form=document.getElementById('loginForm'),button=document.getElementById('submitBtn');let supabase;
